@@ -1,0 +1,160 @@
+-- Навык
+INSERT INTO analytics_skill (name) VALUES 
+('Мытье окон'), 
+('Чистка ковров');
+
+-- Клинер
+INSERT INTO analytics_cleaner (first_name, last_name) VALUES 
+('Иван', 'Иванов'), 
+('Петр', 'Петров');
+
+-- Навык клинера
+INSERT INTO analytics_cleanerskill (cleaner_id, skill_id) VALUES 
+(1, 1), 
+(1, 2), 
+(2, 1);
+
+-- Тип времени
+INSERT INTO analytics_timetype (name) VALUES 
+('Полный рабочий день'), 
+('Неполный рабочий день');
+
+-- График работы
+INSERT INTO analytics_workschedule (cleaner_id, date, time_type_id) VALUES 
+(1, '2024-06-01', 1), 
+(2, '2024-06-01', 2);
+
+-- Должность
+INSERT INTO analytics_position (name) VALUES 
+('Менеджер'), 
+('Клинер');
+
+-- Команда
+INSERT INTO analytics_team (name) VALUES 
+('Команда А'), 
+('Команда Б');
+
+-- Сотрудник
+INSERT INTO analytics_employee (first_name, last_name, middle_name, phone_number, photo, passport_details, position_id, team_id) VALUES 
+('Алексей', 'Иванов', 'Сергеевич', '89001234567', 'photos/alexey.jpg', '1234 567890', 1, 1), 
+('Мария', 'Петрова', 'Александровна', '89007654321', 'photos/maria.jpg', '0987 654321', 2, 2);
+
+-- Клиент
+INSERT INTO analytics_client (first_name, last_name, middle_name, phone_number) VALUES 
+('Михаил', 'Белов', 'Юрьевич', '89001112233'), 
+('Ольга', 'Сидорова', 'Викторовна', '89003334455');
+
+-- Статус
+INSERT INTO analytics_status (name) VALUES 
+('Новая'), 
+('В процессе'), 
+('Завершена');
+
+-- Заявка
+INSERT INTO analytics_order (client_id, status_id, created_at, start_date, end_date, manager_id, comments, total_cost) VALUES 
+(1, 1, '2024-06-01 10:00:00', '2024-06-02 09:00:00', '2024-06-02 18:00:00', 1, 'Проверка состояния окон', 5000.00), 
+(2, 2, '2024-06-01 11:00:00', '2024-06-03 09:00:00', '2024-06-03 18:00:00', 2, 'Чистка ковров', 7000.00);
+
+-- Тип объекта
+INSERT INTO analytics_objecttype (name) VALUES 
+('Жилое'), 
+('Коммерческое');
+
+-- Объект
+INSERT INTO analytics_object (type_id, address, area) VALUES 
+(1, 'г. Москва, ул. Ленина, д. 10', 100.0), 
+(2, 'г. Санкт-Петербург, ул. Пушкина, д. 15', 200.0);
+
+-- Тип помещения
+INSERT INTO analytics_roomtype (name) VALUES 
+('Кухня'), 
+('Гостиная');
+
+-- Форма помещения
+INSERT INTO analytics_roomform (name) VALUES 
+('Прямоугольная'), 
+('Квадратная');
+
+-- Помещение
+INSERT INTO analytics_room (object_id, type_id, form_id, area, height, comment) VALUES 
+(1, 1, 1, 15.0, 2.5, 'Кухня в хорошем состоянии'), 
+(2, 2, 2, 30.0, 3.0, 'Гостиная с видом на парк');
+
+-- Зона
+INSERT INTO analytics_zone (room_id, name, area) VALUES 
+(1, 'Зона приготовления пищи', 5.0), 
+(2, 'Зона отдыха', 10.0);
+
+-- Услуга
+INSERT INTO analytics_service (name, description, base_cost) VALUES 
+('Мытье окон', 'Мытье окон с использованием профессиональных средств', 3000.0), 
+('Чистка ковров', 'Глубокая чистка ковров', 4000.0);
+
+-- Поверхность
+INSERT INTO analytics_surface (name) VALUES 
+('Окно'), 
+('Ковер');
+
+-- Операция
+INSERT INTO analytics_operation (name) VALUES 
+('Мытье'), 
+('Чистка');
+
+-- Услуга поверхности
+INSERT INTO analytics_servicesurface (surface_id, service_id, cost) VALUES 
+(1, 1, 3000.0), 
+(2, 2, 4000.0);
+
+-- Услуга операции
+INSERT INTO analytics_serviceoperation (operation_id, service_id, cost) VALUES 
+(1, 1, 3000.0), 
+(2, 2, 4000.0);
+
+-- Услуга помещения
+INSERT INTO analytics_serviceroom (room_id, service_id, cost) VALUES 
+(1, 1, 3000.0), 
+(2, 2, 4000.0);
+
+-- Услуга зоны
+INSERT INTO analytics_servicezone (zone_id, service_id, cost) VALUES 
+(1, 1, 3000.0), 
+(2, 2, 4000.0);
+
+-- Комплекс услуг
+INSERT INTO analytics_servicepackage (name) VALUES 
+('Комплексная уборка');
+
+-- Строение
+INSERT INTO analytics_building (object_id, name, intercom, number_of_floors) VALUES 
+(1, 'Дом на Ленина', '1234', 5), 
+(2, 'Бизнес-центр на Пушкина', '5678', 10);
+
+-- Этаж
+INSERT INTO analytics_floor (building_id, number, area) VALUES 
+(1, 1, 100.0), 
+(2, 2, 200.0);
+
+-- Услуга этажа
+INSERT INTO analytics_floorservice (floor_id, service_id, cost, comment) VALUES 
+(1, 1, 3000.0, 'Мытье окон на первом этаже'), 
+(2, 2, 4000.0, 'Чистка ковров на втором этаже');
+
+-- Услуга объекта
+INSERT INTO analytics_objectservice (object_id, service_id, cost, comment) VALUES 
+(1, 1, 3000.0, 'Мытье окон жилого дома'), 
+(2, 2, 4000.0, 'Чистка ковров в бизнес-центре');
+
+-- Рейтинг сотрудника
+INSERT INTO analytics_employeerating (employee_id, rating) VALUES 
+(1, 4.5), 
+(2, 4.7);
+
+-- Клинер на заявку
+INSERT INTO analytics_cleanerorderassignment (cleaner_id, order_id, wage) VALUES 
+(1, 1, 1000.0), 
+(2, 2, 1200.0);
+
+-- Резервный клинер на заявку
+INSERT INTO analytics_replacementcleanerorderassignment (cleaner_id, order_id, wage, comment) VALUES 
+(2, 1, 1100.0, 'Замена основного клинера по причине болезни'), 
+(1, 2, 1300.0, 'Замена основного клинера по причине отпуска');
